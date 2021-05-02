@@ -7,7 +7,7 @@ import {
     UserOutlined,
 } from '@ant-design/icons';
 import {BrowserRouter as Router} from 'react-router-dom';
-
+import RegoList from '../../components/RegoList';
 const { Header, Content, Sider } = Layout;
 
 const StyledHeader = styled(Header)`
@@ -36,9 +36,9 @@ const Home = ()=>{
                                 <Link to='/list'></Link>
                             </Menu.Item>
                             {/* <Menu.Item key="2" icon={<UnorderedListOutlined />}>
-                About
-                <Link to="/about"></Link>
-              </Menu.Item> */}
+                                About
+                                <Link to="/about"></Link>
+                            </Menu.Item> */}
                         </Menu>
                     </Sider>
                     <Layout className='site-layout'>
@@ -55,6 +55,8 @@ const Home = ()=>{
                                 minHeight: '100vh',
                             } }
                         >
+                            <RegoList/>
+
                         </Content>
                     </Layout>
                 </Layout>
