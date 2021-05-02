@@ -1,7 +1,9 @@
-import { Table } from 'antd';
+import { Table, Button } from 'antd';
 import React, { useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { getRegoList } from '../utils/apiService/apiService';
+import Filter from '../utils/helper/helper';
+import Moment from 'react-moment';
 const Title = styled.div`
   color: #2e5299;
   font-size: 2.5rem;
@@ -12,13 +14,18 @@ const Title = styled.div`
 const RegoList = () =>{
     // const [data, setData] = useState([]);
     const [list, setList] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalData, setModalData] = useState({
+        vehicle: {},
+        insurer: {},
+        registration: {},
+    });
     useEffect(() => {
-        console.log(list);
         getRegoList()
             .then((res) => {
-                // setData(res);
-                setList(res.data.registrations);
-                console.log(res.data.registrations);
+                const serializedList = Filter.filterRegoList(res.data.registrations);
+                setList(serializedList);
+                // console.log(res.data.registrations);
             });
     }, []);
     const columns = [{
@@ -54,10 +61,30 @@ const RegoList = () =>{
         dataIndex: 'expiry',
         key: 'expiry',
         responsive: ['md'],
+        render: (i, data) => {
+            return (
+                <Moment format='DD MMM YYYY'>{data.registration.expiry_date}</Moment>
+            );
+        }
     }, {
         title: 'More',
         dataIndex: 'more',
         key: 'vehicle',
+        render: (i, data)=>{
+            return (
+                <Button
+                    type={ 'primary' }
+                    size={ 'small' }
+                    onClick={ () =>{
+                        setModalData(data);
+                        setModalVisible(true);
+                        console.log(modalVisible);
+                        console.log(modalData);
+                    } }>
+                    More
+                </Button>
+            );
+        }
     }];
 
     return (
