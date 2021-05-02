@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { getRegoList } from '../utils/apiService/apiService';
 import Filter from '../utils/helper/helper';
 import Moment from 'react-moment';
+import RegoModal from '../components/RegoModal';
+import '../styles/modal.css';
+
 const Title = styled.div`
   color: #2e5299;
   font-size: 2.5rem;
@@ -78,8 +81,8 @@ const RegoList = () =>{
                     onClick={ () =>{
                         setModalData(data);
                         setModalVisible(true);
-                        console.log(modalVisible);
-                        console.log(modalData);
+                        // console.log(modalVisible);
+                        // console.log(modalData);
                     } }>
                     More
                 </Button>
@@ -91,7 +94,13 @@ const RegoList = () =>{
         <>
             <Title>Registration List</Title>
             <Table columns={ columns } dataSource={ list } />
-            {/* {console.log('test')} */}
+            <RegoModal
+                visible={ modalVisible }
+                item={ modalData }
+                onCancelModal={ ()=>{
+                    setModalVisible(false);
+                } }
+            />
         </>
     );
 

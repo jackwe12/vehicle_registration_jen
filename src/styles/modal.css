@@ -1,0 +1,12 @@
+
+@media screen and (max-width: 800px) {
+    .ant-modal-body{
+        height:800px !important;
+    }    
+}
+
+@media screen and (max-width: 600px) {
+    .ant-modal-body{
+        height:1300px !important;
+    }    
+}
