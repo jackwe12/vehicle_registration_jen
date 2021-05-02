@@ -1,0 +1,58 @@
+{
+    "extends": [
+        "react-app"
+    ],
+    "rules": {
+        "max-len": [1, 150, 2, { "ignoreUrls": true }],
+        "no-console": 0,
+        "linebreak-style": 0,
+        "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
+        "react/jsx-curly-spacing": [2, "always"],
+        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
+        "react-hooks/rules-of-hooks": "error",
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [2, "always"],
+        "jsx-quotes": [
+            "error",
+            "prefer-single"
+        ],
+        "no-multi-spaces": "error",
+        "no-trailing-spaces": "error",
+        "no-unused-vars": "error",
+        "no-irregular-whitespace": "error",
+        "curly": "error",
+        "indent": [
+            "warn",
+            4
+        ],
+        "eqeqeq": [
+            "error",
+            "smart"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxEOF": 1
+            }
+        ],
+        "no-restricted-imports": [
+            "error",
+            {
+                "paths": [
+                    {
+                        "name": "common",
+                        "message": "Use relative path when inside common project"
+                    }
+                ],
+                "patterns": [
+                    "*build*"
+                ]
+            }
+        ],
+        "prefer-const": "error"
+    }
+}
