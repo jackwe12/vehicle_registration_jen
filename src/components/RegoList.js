@@ -83,8 +83,6 @@ const RegoList = () =>{
                     onClick={ () =>{
                         setModalData(data);
                         setModalVisible(true);
-                        // console.log(modalVisible);
-                        // console.log(modalData);
                     } }>
                     More
                 </Button>

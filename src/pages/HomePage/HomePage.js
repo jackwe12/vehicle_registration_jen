@@ -56,7 +56,6 @@ const Home = ()=>{
                             } }
                         >
                             <RegoList/>
-
                         </Content>
                     </Layout>
                 </Layout>

@@ -12,10 +12,7 @@ const StyledBar = styled.div`
 `;
 
 const SearchBar = (props) => {
-    // const [filterData, setFilterData] = useState({
-    //     type: 'All',
-    //     kw: '',
-    // });
+
     const filterData ={
         type: 'All',
         kw: '',
