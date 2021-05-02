@@ -33,7 +33,7 @@ const Home = ()=>{
                         <Menu theme='dark' defaultSelectedKeys={ ['1'] } mode='inline' >
                             <Menu.Item key='1' icon={ <UnorderedListOutlined /> }>
                                 Vehicle Rego List
-                                <Link to='/list'></Link>
+                                <Link to='/'></Link>
                             </Menu.Item>
                             {/* <Menu.Item key="2" icon={<UnorderedListOutlined />}>
                                 About

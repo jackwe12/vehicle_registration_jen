@@ -6,6 +6,7 @@ import Filter from '../utils/helper/helper';
 import Moment from 'react-moment';
 import RegoModal from '../components/RegoModal';
 import '../styles/modal.css';
+import SearchBar from './SearchBar';
 
 const Title = styled.div`
   color: #2e5299;
@@ -15,7 +16,7 @@ const Title = styled.div`
 `;
 
 const RegoList = () =>{
-    // const [data, setData] = useState([]);
+    const [data, setData] = useState([]);
     const [list, setList] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalData, setModalData] = useState({
@@ -28,7 +29,8 @@ const RegoList = () =>{
             .then((res) => {
                 const serializedList = Filter.filterRegoList(res.data.registrations);
                 setList(serializedList);
-                // console.log(res.data.registrations);
+                // copy list as origin data
+                setData(serializedList);
             });
     }, []);
     const columns = [{
@@ -93,7 +95,11 @@ const RegoList = () =>{
     return (
         <>
             <Title>Registration List</Title>
-            <Table columns={ columns } dataSource={ list } />
+            <SearchBar
+                data = { data }
+                setList = { setList }
+            />
+            <Table columns={ columns } dataSource={ list } rowKey={ (id)=> id.plate_number }/>
             <RegoModal
                 visible={ modalVisible }
                 item={ modalData }
