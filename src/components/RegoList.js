@@ -1,7 +1,7 @@
 import { Table } from 'antd';
-import React, {useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import styled from 'styled-components';
-
+import { getRegoList } from '../utils/apiService/apiService';
 const Title = styled.div`
   color: #2e5299;
   font-size: 2.5rem;
@@ -10,11 +10,17 @@ const Title = styled.div`
 `;
 
 const RegoList = () =>{
-
+    // const [data, setData] = useState([]);
+    const [list, setList] = useState([]);
     useEffect(() => {
-
+        console.log(list);
+        getRegoList()
+            .then((res) => {
+                // setData(res);
+                setList(res.data.registrations);
+                console.log(res.data.registrations);
+            });
     }, []);
-    const list = [];
     const columns = [{
         title: 'Plate Number',
         dataIndex: 'plate_number',
