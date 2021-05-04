@@ -12,7 +12,6 @@ const StyledBar = styled.div`
 `;
 
 const SearchBar = (props) => {
-
     const filterData ={
         type: 'All',
         kw: '',
@@ -21,38 +20,38 @@ const SearchBar = (props) => {
     const {data} = props;
     //filter by type & plate number
     const onFilter = (filter) => {
-        // Log.debug('onFilter', filter);
         //two-factor, first filtered by kw then type
+        // console.log(filter, data);
         const filterKwData = data.filter((item) => {
-            // console.log(item);
-            if (item.plate_number.toLowerCase().includes(filter.kw.toLowerCase())) {return true;}
-            if (item.vehicle.type.toLowerCase().includes(filter.kw.toLowerCase())) {return true;}
-            if (item.vehicle.make.toLowerCase().includes(filter.kw.toLowerCase())) {return true;}
-            if (item.vehicle.colour.toLowerCase().includes(filter.kw.toLowerCase())) {return true;}
-            if (item.vehicle.model.toLowerCase().includes(filter.kw.toLowerCase())) {return true;}
+            if (
+                item.plate_number.toLowerCase().includes(filter.kw.toLowerCase() )||
+            item.vehicle.type.toLowerCase().includes(filter.kw.toLowerCase() )||
+            item.vehicle.make.toLowerCase().includes(filter.kw.toLowerCase() )||
+            item.vehicle.colour.toLowerCase().includes(filter.kw.toLowerCase()) ||
+            item.vehicle.model.toLowerCase().includes(filter.kw.toLowerCase() )
+            ) {return true;}
+
             if (filter.kw === '') {return true;}
             return false;
         });
         const filterTypeData = filterKwData.filter((item) => {
-            if (filter.type === 'All') {return true;}
-            if (item.vehicle.type.toLowerCase().includes(filter.type.toLowerCase()))
-            {return true;}
+            if (
+                filter.type === 'All' ||
+                item.vehicle.type.toLowerCase().includes(filter.type.toLowerCase())
+            ){return true;}
             return false;
         });
-        // Log.debug('filterTypeData', filterTypeData);
         //renew list
         props.setList(filterTypeData);
     };
 
     //filter by type
     const onTypeChange = (e) => {
-        // Log.debug(e);
         filterData.type = e.target.value;
         onFilter(filterData);
     };
     //filter by search key word
     const onKeywordSearch = (v) => {
-        // Log.debug(v);
         filterData.kw = v;
         onFilter(filterData);
     };

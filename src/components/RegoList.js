@@ -7,6 +7,7 @@ import Moment from 'react-moment';
 import RegoModal from '../components/RegoModal';
 import '../styles/modal.css';
 import SearchBar from './SearchBar';
+import '../styles/list.css';
 
 const Title = styled.div`
   color: #2e5299;

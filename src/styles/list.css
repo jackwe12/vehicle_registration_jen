@@ -1,0 +1,14 @@
+
+@media screen and (max-width: 700px) {
+    .ant-layout-sider{
+        display:none;
+    }
+    .sc-AxjAm {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .ant-radio-group{
+        display: flex;
+        font-size: 12px!important;
+    }
+}
